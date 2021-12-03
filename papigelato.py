@@ -7,6 +7,7 @@ caramel = 0
 slagprijs = 0.50
 sprinprijs = 0.30
 caraprijs = 0.60
+liter = 0
 def vraag():
     vraag = input('wilt u nog meer bestellen? ')
     if vraag == 'y' or vraag == 'yes' or vraag == 'Y':
@@ -24,7 +25,50 @@ def welkom():
 
 def sorry():
     print('sorry dat begrijp ik niet! ')
-
+def ZakVraag():
+    vraag2 = input('wilt u nog meer bestellen? ')
+    if vraag2 == 'y' or vraag2 == 'yes' or vraag2 == 'Y':
+        return loop()
+    elif vraag2 == 'n' or vraag2 == 'no' or vraag2 == 'N':
+        print('bedankt voor je bestelling! ')
+        print('tot ziens')
+    elif vraag2 != vraag2 != 'y' or vraag2 != 'yes' or vraag2 != 'Y' or vraag2 != 'n' or vraag2 != 'no' or vraag2 != 'N':
+        sorry()
+        ZakVraag()
+def zakelijksmaken():
+    global liter
+    liternummer = 0
+    for x in range(int(liter)):
+        liternummer += 1
+        smaak = input('liter nummer: {}: A) Chocolade B) Aardbei C) vanile D) Munt. type(A or B or c or D): '.format(liternummer))
+        if smaak == 'a' or smaak == 'A':
+            smaak = 'chocolade'
+        elif smaak == 'b' or smaak == 'B':
+            smaak = 'aardbei'
+        elif smaak == 'c' or smaak == 'C':
+            smaak = 'vanile'
+        elif smaak == 'd' or smaak == 'D':
+            smaak = 'munt'
+        else:
+            sorry()
+            zakelijksmaken()
+def zakelijkfactuur():
+    literprijs = 9.80
+    total = (literprijs*int(liter))
+    btw = (total/100) * 9
+    print('----------["Papi Gelato"]----------')
+    print('Liter         {} x {} = {:.2f}'.format(int(liter), literprijs,total))
+    print('                         ------')
+    print('Totaal(inclusief BTW) = {:.2f}'.format(total))
+    print('BTW 9%                = {:.2f}'.format(btw))
+    ZakVraag()
+def zakelijk():
+    global liter
+    welkom()
+    liter = input('hoeveel liters wilt u? ')
+    zakelijksmaken()
+    vraag()
+    zakelijkfactuur()
 def factuur():
     total = ((aantalbollen*1.10)+(bakjes*0.75)+(horn*1.25)+(slagroom*slagprijs + sprikels * sprinprijs + caramel*caraprijs))
     print('----------["Papi Gelato"]----------')
@@ -35,7 +79,7 @@ def factuur():
     print('                         ------')
     print('Totaal                  = {:.2f}'.format(total))
     vraag()
-        
+       
 def loop():
     bestellingen = int(input('hoeveel beestellingen wilt u maken ?'))
     for i in range(bestellingen):
@@ -48,7 +92,6 @@ def bolletjes():
     global slagprijs 
     global caraprijs
     global sprinprijs
-
     welkom()
     aantal = str(input('hoeveel bolletjes wilt u? '))
     aantalbollen += int(aantal)
@@ -56,7 +99,7 @@ def bolletjes():
         global slagroom 
         global caramel
         global sprikels
-        top = input('wil je toppings op je ijsje? ')
+        top = input('wil je toppings op je ijsje?(Y/N): ')
         if top == 'y' or top == 'Y' or top == 'yes' or top == 'Yes' or top == 'j' or top == 'J' or top == 'Ja' or top == 'ja':
             topingvraag = input('wat voor topping wil je? kies een van de volgende: A)Slagroom B)Sprinkels C)Caramel saus: ')
             if topingvraag == 'A' or topingvraag == 'a':
@@ -69,7 +112,7 @@ def bolletjes():
                 topingvraag == 'Caramel'
                 caramel += 1
         elif top == 'n' or top == 'N' or top =='Nee' or top == 'nee':
-            smaken()
+            pass
         else: 
             sorry()
             topping()
@@ -99,10 +142,7 @@ def bolletjes():
             bak = 'bak'
             hoornjte = 'hoorntje'
             if keuze == 'a' or keuze == 'A':
-                slagprijs = 0.90
                 caraprijs = 0.90
-                sprinprijs = 0.90
-
                 print('dan krijgt u van mij {} bolletjes in een {}'.format(aantal, bak))
                 print('hier is uw {} in een {}'.format(aantal, bak))
 
@@ -121,6 +161,15 @@ def bolletjes():
     elif not aantal.isdigit():
         sorry()
         bolletjes()
-
-loop()
-factuur()
+def zakofpart():
+    zakelij = input('wilt u zakelijk of particulier kopen? kies A) voor Zakelijk  en B)voor Particulier: ')
+    if zakelij == 'A' or zakelij == 'a': 
+        zakelijk()
+    elif zakelij == 'B' or zakelij == 'b':
+        loop()
+        factuur()
+    else : 
+        sorry()
+        zakofpart()
+welkom()
+zakofpart()
