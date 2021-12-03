@@ -40,15 +40,14 @@ def zakelijksmaken():
     liternummer = 0
     for x in range(int(liter)):
         liternummer += 1
-        smaak = input('liter nummer: {}: A) Chocolade B) Aardbei C) vanile D) Munt. type(A or B or c or D): '.format(liternummer))
+        smaak = input('liter nummer: {}: A) Chocolade B) Aardbei C) vanile, type(A or B or c or D): '.format(liternummer))
         if smaak == 'a' or smaak == 'A':
             smaak = 'chocolade'
         elif smaak == 'b' or smaak == 'B':
             smaak = 'aardbei'
         elif smaak == 'c' or smaak == 'C':
             smaak = 'vanile'
-        elif smaak == 'd' or smaak == 'D':
-            smaak = 'munt'
+
         else:
             sorry()
             zakelijksmaken()
