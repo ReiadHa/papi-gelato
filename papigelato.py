@@ -28,7 +28,7 @@ def sorry():
 def ZakVraag():
     vraag2 = input('wilt u nog meer bestellen? ')
     if vraag2 == 'y' or vraag2 == 'yes' or vraag2 == 'Y':
-        return loop()
+        return zakofpart()
     elif vraag2 == 'n' or vraag2 == 'no' or vraag2 == 'N':
         print('bedankt voor je bestelling! ')
         print('tot ziens')
@@ -67,7 +67,7 @@ def zakelijk():
     welkom()
     liter = input('hoeveel liters wilt u? ')
     zakelijksmaken()
-    vraag()
+    ZakVraag()
     zakelijkfactuur()
 def factuur():
     total = ((aantalbollen*0.95)+(bakjes*0.75)+(horn*1.25)+(slagroom*slagprijs + sprikels * sprinprijs + caramel*caraprijs))
