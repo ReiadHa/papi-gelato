@@ -24,7 +24,7 @@ def welkom():
     print('je mag alle smaken kiezen zolang dat het vanile, aardbei, chocolade en munt is')
 
 def sorry():
-    print('sorry dat begrijp ik niet! ')
+    print('Sorry dat is geen optie die we aanbieden ')
 def ZakVraag():
     vraag2 = input('wilt u nog meer bestellen? ')
     if vraag2 == 'y' or vraag2 == 'yes' or vraag2 == 'Y':
@@ -55,7 +55,7 @@ def zakelijksmaken():
 def zakelijkfactuur():
     literprijs = 9.80
     total = (literprijs*int(liter))
-    btw = (total/100) * 9
+    btw = (total/100) * 6
     print('----------["Papi Gelato"]----------')
     print('Liter         {} x {} = {:.2f}'.format(int(liter), literprijs,total))
     print('                         ------')
@@ -70,9 +70,9 @@ def zakelijk():
     vraag()
     zakelijkfactuur()
 def factuur():
-    total = ((aantalbollen*1.10)+(bakjes*0.75)+(horn*1.25)+(slagroom*slagprijs + sprikels * sprinprijs + caramel*caraprijs))
+    total = ((aantalbollen*0.95)+(bakjes*0.75)+(horn*1.25)+(slagroom*slagprijs + sprikels * sprinprijs + caramel*caraprijs))
     print('----------["Papi Gelato"]----------')
-    print('Bolletjes     {} x 1.10  = {:.2f}'.format(aantalbollen,(aantalbollen*1.10)))
+    print('Bolletjes     {} x 1.10  = {:.2f}'.format(aantalbollen,(aantalbollen*0.95)))
     print('Horrentje     {} x 1.25  = {:.2f}'.format(horn,(horn*1.25)))
     print('Bakje         {} x 0.75  = {:.2f}'.format(bakjes,(bakjes*0.75)))
     print('Toppings                = {:.2f}'.format(slagroom*slagprijs + sprikels * sprinprijs + caramel*caraprijs))
@@ -120,15 +120,13 @@ def bolletjes():
         nummer = 0
         for x in range(int(aantal)):
             nummer+=1
-            smaak = input('wat voor smaak wilt u voor bolletje nummer {}: A) Chocolade B) Aardbei C) vanile D) Munt. type(A or B or c or D): '.format(nummer))
+            smaak = input('wat voor smaak wilt u voor bolletje nummer {}: A) Chocolade B) Aardbei C) vanile  type(A or B or c): '.format(nummer))
             if smaak == 'a' or smaak == 'A':
                 smaak = 'chocolade'
             elif smaak == 'b' or smaak == 'B':
                 smaak = 'aardbei'
             elif smaak == 'c' or smaak == 'C':
                 smaak = 'vanile'
-            elif smaak == 'd' or smaak == 'D':
-                smaak = 'munt'
             else:
                 sorry()
                 smaken()
