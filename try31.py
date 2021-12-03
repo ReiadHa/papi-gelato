@@ -60,7 +60,7 @@ def zakelijkfactuur():
     print('Liter         {} x {} = {:.2f}'.format(int(liter), literprijs,total))
     print('                         ------')
     print('Totaal(inclusief BTW) = {:.2f}'.format(total))
-    print('BTW 9%                = {:.2f}'.format(btw))
+    print('BTW 6%                = {:.2f}'.format(btw))
     ZakVraag()
 def zakelijk():
     global liter
